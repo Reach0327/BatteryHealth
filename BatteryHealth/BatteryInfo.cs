@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
+// Credit to: gist.github.com/ahawker/9715872
+// With slight modifications
 namespace BatteryHealth
 {
     public class BatteryInformation
@@ -41,10 +43,7 @@ namespace BatteryHealth
 
 
                 deviceDataPointer = Marshal.AllocHGlobal(Win32.DEVICE_INTERFACE_BUFFER_SIZE);
-                //Win32.SP_DEVICE_INTERFACE_DETAIL_DATA deviceDetailData =
-                //    (Win32.SP_DEVICE_INTERFACE_DETAIL_DATA)Marshal.PtrToStructure(deviceDataPointer, typeof(Win32.SP_DEVICE_INTERFACE_DETAIL_DATA));
 
-                //toggle these two and see if naything changes... ^^^^^^^^^^^^
                 Win32.SP_DEVICE_INTERFACE_DETAIL_DATA deviceDetailData = new Win32.SP_DEVICE_INTERFACE_DETAIL_DATA();
                 deviceDetailData.CbSize = (IntPtr.Size == 8) ? 8 : 4 + Marshal.SystemDefaultCharSize;
 
