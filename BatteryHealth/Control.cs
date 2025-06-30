@@ -32,13 +32,13 @@ namespace BatteryHealth
                 return;
 
             batteryInformation = BatteryInfo.GetBatteryInformation();
-            int batteryHealth = getBatteryHealthPercentage(batteryInformation.FullChargeCapacity, batteryInformation.DesignedMaxCapacity);
+            double batteryHealth = getBatteryHealthPercentage(batteryInformation.FullChargeCapacity, batteryInformation.DesignedMaxCapacity);
             notifyIcon.Text = "Battery Health: " + batteryHealth + "%";
         }
 
-        private int getBatteryHealthPercentage(int currentCapacity, int designedCapacity)
+        private double getBatteryHealthPercentage(int currentCapacity, int designedCapacity)
         {
-            return (currentCapacity / designedCapacity) * 100;
+            return Math.Round((double)currentCapacity / designedCapacity * 100, 2);
         }
 
         private void batteryHealthTimer_Tick(object sender, EventArgs e)
