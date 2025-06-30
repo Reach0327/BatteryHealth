@@ -4,7 +4,6 @@ namespace BatteryHealth
 {
     public partial class Control : Form
     {
-        NotifyIcon notifyIcon;
         BatteryInformation batteryInformation;
 
         public Control()
@@ -12,6 +11,10 @@ namespace BatteryHealth
             InitializeComponent();
             notifyIcon = new NotifyIcon();
             notifyIcon.Visible = true;
+            notifyIcon.ContextMenuStrip = contextMenuStrip;
+            notifyIcon.ContextMenuStrip.Items.Add("Toggle Run on Startup", null, handleToggleRunStartup);
+            ((ToolStripMenuItem)notifyIcon.ContextMenuStrip.Items[0]).Checked = StartupUtility.IsInStartup();
+
             batteryInformation = BatteryInfo.GetBatteryInformation();
         }
 
@@ -52,12 +55,25 @@ namespace BatteryHealth
 
         private double getBatteryHealthPercentage(int currentCapacity, int designedCapacity)
         {
-            return Math.Round((double)currentCapacity / designedCapacity * 100, 2);
+            return Math.Round((double) currentCapacity / designedCapacity * 100, 2);
         }
 
         private void batteryHealthTimer_Tick(object sender, EventArgs e)
         {
             updateBatteryHealth();
+        }
+
+        private void handleToggleRunStartup(object sender, EventArgs e)
+        {
+            if (StartupUtility.IsInStartup())
+            {
+                StartupUtility.RemoveFromStartup();
+            } else
+            {
+                StartupUtility.RunOnStartup();
+            }
+
+            ((ToolStripMenuItem)notifyIcon.ContextMenuStrip.Items[0]).Checked = StartupUtility.IsInStartup();
         }
     }
 }

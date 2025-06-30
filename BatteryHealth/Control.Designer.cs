@@ -30,12 +30,25 @@
         {
             components = new System.ComponentModel.Container();
             batteryHealthTimer = new System.Windows.Forms.Timer(components);
+            notifyIcon = new NotifyIcon(components);
+            contextMenuStrip = new ContextMenuStrip(components);
             SuspendLayout();
             // 
             // batteryHealthTimer
             // 
             batteryHealthTimer.Interval = 1000;
             batteryHealthTimer.Tick += batteryHealthTimer_Tick;
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.ContextMenuStrip = contextMenuStrip;
+            notifyIcon.Text = "Initializing..";
+            notifyIcon.Visible = true;
+            // 
+            // contextMenuStrip
+            // 
+            contextMenuStrip.Name = "contextMenuStrip1";
+            contextMenuStrip.Size = new Size(61, 4);
             // 
             // Control
             // 
@@ -52,5 +65,7 @@
         #endregion
 
         private System.Windows.Forms.Timer batteryHealthTimer;
+        private NotifyIcon notifyIcon;
+        private ContextMenuStrip contextMenuStrip;
     }
 }
