@@ -7,11 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon></PackageIcon>
-    <ApplicationIcon>Resources\BatteryPlus.ico</ApplicationIcon>
+    <ApplicationIcon>Properties\Resources\Battery.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\BatteryPlus.ico" />
+    <Content Include="Properties\Resources\Battery.ico" />
   </ItemGroup>
 
   <ItemGroup>

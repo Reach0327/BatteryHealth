@@ -63,9 +63,29 @@ namespace BatteryHealth.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon BatteryPlus {
+        internal static System.Drawing.Icon BatteryCaution {
             get {
-                object obj = ResourceManager.GetObject("BatteryPlus", resourceCulture);
+                object obj = ResourceManager.GetObject("BatteryCaution", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon BatteryDanger {
+            get {
+                object obj = ResourceManager.GetObject("BatteryDanger", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon BatteryOK {
+            get {
+                object obj = ResourceManager.GetObject("BatteryOK", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

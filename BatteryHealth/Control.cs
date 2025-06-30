@@ -1,5 +1,4 @@
-using System.Collections.Specialized;
-using System.Runtime.Versioning;
+using BatteryHealth.Properties;
 
 namespace BatteryHealth
 {
@@ -12,7 +11,6 @@ namespace BatteryHealth
         {
             InitializeComponent();
             notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = Properties.Resources.BatteryPlus;
             notifyIcon.Visible = true;
             batteryInformation = BatteryInfo.GetBatteryInformation();
         }
@@ -32,8 +30,24 @@ namespace BatteryHealth
                 return;
 
             batteryInformation = BatteryInfo.GetBatteryInformation();
-            double batteryHealth = getBatteryHealthPercentage(batteryInformation.FullChargeCapacity, batteryInformation.DesignedMaxCapacity);
-            notifyIcon.Text = "Battery Health: " + batteryHealth + "%";
+            int batteryHealth = (int) getBatteryHealthPercentage(batteryInformation.FullChargeCapacity, batteryInformation.DesignedMaxCapacity);
+            string baseText = "Battery Health: " + batteryHealth + "%";
+
+            if (batteryHealth <= 100 && batteryHealth >= 80)
+            {
+                notifyIcon.Icon = Resources.BatteryOK;
+                notifyIcon.Text = baseText + " (Ok)";
+            }
+            else if (batteryHealth <= 79 && batteryHealth >= 60)
+            {
+                notifyIcon.Icon = Resources.BatteryCaution;
+                notifyIcon.Text = baseText + " (Caution)";
+            }
+            else
+            {
+                notifyIcon.Icon = Resources.BatteryDanger;
+                notifyIcon.Text = baseText + " (Danger)";
+            }
         }
 
         private double getBatteryHealthPercentage(int currentCapacity, int designedCapacity)
