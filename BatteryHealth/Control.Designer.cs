@@ -36,7 +36,7 @@
             // 
             // batteryHealthTimer
             // 
-            batteryHealthTimer.Interval = 1000;
+            batteryHealthTimer.Interval = 60000;
             batteryHealthTimer.Tick += batteryHealthTimer_Tick;
             // 
             // notifyIcon
@@ -47,15 +47,17 @@
             // 
             // contextMenuStrip
             // 
+            contextMenuStrip.ImageScalingSize = new Size(20, 20);
             contextMenuStrip.Name = "contextMenuStrip1";
             contextMenuStrip.Size = new Size(61, 4);
             // 
             // Control
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(10, 10);
+            ClientSize = new Size(11, 13);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Control";
             Text = "Control";
             Shown += Control_Shown;
